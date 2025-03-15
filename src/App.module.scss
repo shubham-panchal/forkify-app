@@ -1,0 +1,53 @@
+.root {
+  font-weight: 400;
+  line-height: 1.6;
+  color: #615551;
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+
+  .container {
+    max-width: 1200px;
+    min-height: 1170px;
+    width: 100%;
+    margin: 4vw 0;
+    background-color: #fff;
+    border-radius: 9px;
+    // overflow: hidden;
+    box-shadow: 0 2rem 6rem 0.5rem rgba(97, 85, 81, 0.2);
+
+    .main_container {
+      height: calc(100% - 6.25rem);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+
+      .aside_container {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .main {
+        height: 100%;
+        background-color: #f9f5f3;
+
+        .message {
+          padding: 3.125rem 2.5rem;
+          text-align: center;
+          font-size: 1.125rem;
+          line-height: 1.5;
+          font-weight: 600;
+          color: #615551;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .container {
+      margin: 0;
+      max-width: 100%;
+    }
+  }
+}

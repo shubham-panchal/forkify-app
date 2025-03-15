@@ -1,0 +1,212 @@
+.recipe_component {
+  .recipe_image_wrapper {
+    height: 20rem;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(
+        to right bottom,
+        rgb(251, 219, 137),
+        rgb(244, 137, 130)
+      );
+      opacity: 0.5;
+    }
+    .recipe_image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .recipe_name {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 50%;
+      line-height: 2;
+      font-size: 2rem;
+      color: #ffffff;
+      font-weight: 700;
+      text-transform: uppercase;
+      transform: translate(-50%, 20%) skewY(-6deg);
+      box-decoration-break: clone;
+      text-align: center;
+
+      span {
+        padding: 0.875rem 1.25rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        background-image: linear-gradient(
+          to right bottom,
+          rgb(251, 219, 137),
+          rgb(244, 137, 130)
+        );
+      }
+    }
+  }
+
+  .recipe_details {
+    font-size: 1rem;
+    padding: 4.625em 5em 2.125em 5em;
+    display: flex;
+
+    .details {
+      display: flex;
+      align-items: center;
+      margin-right: 2.75em;
+
+      .details_text_icon {
+        width: 1.5em;
+        height: 1.5em;
+        margin-right: 0.625em;
+      }
+
+      .details_text {
+        text-transform: uppercase;
+        color: #615551;
+
+        &_bold {
+          font-weight: 700;
+          margin-right: 0.313em;
+        }
+      }
+
+      .details_btn_wrapper {
+        display: flex;
+        margin-left: 1em;
+        .details_btn {
+          margin-right: 0.25em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+
+          img {
+            width: 1.25em;
+            height: 1.25em;
+          }
+        }
+      }
+    }
+
+    .user_generated_icon {
+      margin-left: auto;
+      margin-right: 1.25em;
+      background-color: #eeeae8;
+    }
+
+    .hidden {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .bookmark_icon {
+      background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+    }
+
+    .user_generated_icon,
+    .bookmark_icon {
+      width: 2.5em;
+      height: 2.5em;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      flex-shrink: 0;
+
+      .icon {
+        width: 1.5em;
+        flex-shrink: 0;
+      }
+    }
+  }
+  .recipe_ingredients {
+    padding: 3.125em 5em;
+    background-color: #f2efee;
+
+    .heading {
+      color: #f38e82;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.25em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .ingredients_list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5em 1.875em;
+
+      .list_item {
+        display: flex;
+
+        .icon_tick {
+          width: 1.25em;
+          height: 1.25em;
+          margin-right: 0.625rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-shrink: 0;
+        }
+
+        .ingredient_quantity {
+          margin-right: 0.313rem;
+        }
+      }
+    }
+  }
+
+  .how_to_cook_block {
+    padding: 3.125em 6.25em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .heading_3 {
+      font-size: 1.25rem;
+      color: #f38e82;
+      margin-bottom: 1.2em;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .directions_text {
+      font-size: 1.125rem;
+      margin-bottom: 2em;
+      color: #918581;
+      text-align: center;
+
+      .publisher {
+        font-weight: 700;
+      }
+    }
+
+    .directions_cta {
+      font-size: 0.875rem;
+      font-weight: 700;
+      padding: 0.86em 1.57em;
+      border-radius: 10em;
+      background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+      text-transform: uppercase;
+      cursor: pointer;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+
+      .cta_icon {
+        margin-left: 0.625rem;
+        width: 1.28em;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
