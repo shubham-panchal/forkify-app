@@ -67,3 +67,8 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+#root {
+  height: 100vh;
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+}
