@@ -17,8 +17,10 @@
     padding: 2.5rem;
     position: relative;
     border-radius: 0.5rem;
+    overflow-y: auto;
 
     .close_icon {
+      cursor: pointer;
       padding: 1rem;
       position: absolute;
       top: 0;

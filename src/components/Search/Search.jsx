@@ -19,20 +19,24 @@ const Search = ({ onSubmit }) => {
   };
 
   const handleSearch = async (e) => {
-    onSubmit(true);
     try {
       e.preventDefault();
       if (searchInput?.trim()?.length) {
+        onSubmit(true);
         const url = `${apiHost}?search=${searchInput}&key=${apiKey}`;
         const res = await fetch(url);
 
         if (res.ok) {
           // Check if the response is successful
           const data = await res.json(); // Parse the JSON from the response body
-          console.log(data, "Response Data");
+          // console.log(data, "Response Data");
 
           // Assuming your API returns the results in a `recipes` field
           dispatch({ type: "SET_RECIPES_JSON", payload: data?.data?.recipes });
+          dispatch({
+            type: "UPDATE_RESULT_COUNT",
+            payload: data?.results,
+          });
           // updateRecipesData(data?.data?.recipes || []); // Update state with the data or an empty array
         } else {
           console.error("Error: Failed to fetch data from the API");

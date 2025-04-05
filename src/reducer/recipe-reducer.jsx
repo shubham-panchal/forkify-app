@@ -2,6 +2,7 @@ export const initialState = {
   all_recipes: [],
   bookmarked: [],
   selected_receipe: {},
+  results: -1,
 };
 
 export const recipeReducer = (state = initialState, action) => {
@@ -11,8 +12,6 @@ export const recipeReducer = (state = initialState, action) => {
     case "SET_SELECTED_RECIPE":
       const localStorageBookmarks =
         JSON?.parse(localStorage?.getItem("bookmarks")) || [];
-
-      console.log(localStorageBookmarks, "LSB");
       return {
         ...state,
         selected_receipe: {
@@ -62,7 +61,6 @@ export const recipeReducer = (state = initialState, action) => {
           { ...action?.payload, bookmarked: true },
         ];
       }
-      console.log("NEW_BOKMARKS", newBookmarks);
       localStorage?.setItem("bookmarks", JSON?.stringify(newBookmarks));
       return {
         ...state,
@@ -75,6 +73,8 @@ export const recipeReducer = (state = initialState, action) => {
               : false,
         },
       };
+    case "UPDATE_RESULT_COUNT":
+      return { ...state, results: action?.payload };
     default:
       return state;
   }

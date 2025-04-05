@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Aside from "./components/Aside/Aside";
 import Recipe from "./components/Recipe/Recipe";
 import { MyContext } from "./context/context";
+import { imageKeyMapping } from "./assets/imageKeyMapping";
 
 function App() {
   const [selectedData, setSelectedData] = useState({});
@@ -28,8 +29,16 @@ function App() {
               <Recipe selectedRecipe={selectedData} />
             ) : (
               <div className={classes?.message}>
-                Start by searching for a recipe or <br /> an ingredient. Have
-                fun!
+                <img
+                  src={imageKeyMapping?.smileyIcon}
+                  alt="smiley"
+                  className={classes?.smiley}
+                />
+                <div className="">
+                  {" "}
+                  Start by searching for a recipe or <br /> an ingredient. Have
+                  fun!
+                </div>
               </div>
             )}
           </div>

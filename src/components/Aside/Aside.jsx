@@ -112,11 +112,13 @@ const Aside = ({ onSelection, showLoader }) => {
             </div>
           </div>
         </>
-      ) : (
+      ) : !state?.results ? (
         <div className={classes?.no_recipes_text}>
           <img src={imageKeyMapping?.iconDanger} alt="danger" />
           No recipes found for your query! <br /> Please try again.{" "}
         </div>
+      ) : (
+        <></>
       )}
     </div>
   );

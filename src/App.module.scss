@@ -39,6 +39,15 @@
           line-height: 1.5;
           font-weight: 600;
           color: #615551;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 1rem;
+          text-align: start;
+
+          .smiley {
+            width: 2.5rem;
+          }
         }
       }
     }

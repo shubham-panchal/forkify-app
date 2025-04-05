@@ -146,6 +146,7 @@
 
       .list_item {
         display: flex;
+        cursor: pointer;
 
         .icon_tick {
           width: 1.25em;
@@ -160,6 +161,11 @@
         .ingredient_quantity {
           margin-right: 0.313rem;
         }
+      }
+
+      .strike {
+        text-decoration: line-through;
+        opacity: 0.5;
       }
     }
   }

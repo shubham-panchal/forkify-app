@@ -36,7 +36,7 @@ const AddRecipe = ({ onCloseAction }) => {
 
   const onSubmit = async (data) => {
     try {
-      console.log("Submitted Data:", data);
+      // console.log("Submitted Data:", data);
       let payload = { ...data };
       let newIngredients = data?.ingredients?.map((ing) => {
         let val = ing?.name?.trim()?.split(",");
@@ -51,7 +51,7 @@ const AddRecipe = ({ onCloseAction }) => {
       payload["ingredients"] = newIngredients;
       const url = `${apiHost}/?key=${apiKey}`;
 
-      console.log("PAYLOAD", payload);
+      // console.log("PAYLOAD", payload);
       const res = await fetch(url, {
         method: "POST",
         headers: {

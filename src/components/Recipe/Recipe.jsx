@@ -10,9 +10,11 @@ const Recipe = ({ selectedRecipe }) => {
   const { state, dispatch } = useContext(MyContext);
   const [recipeDetails, setRecipeDetails] = useState({});
   const [showLoader, setShowLoader] = useState(false);
+  const [ingredientsStatus, setIngredientsStatus] = useState({});
 
   useEffect(() => {
     getSelectedRecipeDetails();
+    setIngredientsStatus({});
   }, [selectedRecipe]);
 
   useEffect(() => {
@@ -45,6 +47,10 @@ const Recipe = ({ selectedRecipe }) => {
 
   const handleDirectionsCTA = (url) => {
     window.open(url, { target: "blank" });
+  };
+
+  const handleIngredientsStatus = (index) => {
+    setIngredientsStatus((prev) => ({ ...prev, [index]: prev[index] ? 0 : 1 }));
   };
 
   return showLoader ? (
@@ -140,7 +146,13 @@ const Recipe = ({ selectedRecipe }) => {
         <div className={classes?.heading}>Recipe ingredients</div>
         <div className={classes?.ingredients_list}>
           {recipeDetails?.ingredients?.map((data, index) => (
-            <div className={classes?.list_item} key={index}>
+            <div
+              className={`${classes?.list_item} ${
+                ingredientsStatus[index] ? classes?.strike : ""
+              }`}
+              key={index}
+              onClick={() => handleIngredientsStatus(index)}
+            >
               <div className={classes?.icon_tick}>
                 <img src={imageKeyMapping?.iconTick} alt="tick icon" />
               </div>
