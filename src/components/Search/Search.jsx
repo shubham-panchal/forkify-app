@@ -11,8 +11,11 @@ const Search = ({ onSubmit }) => {
 
   const handleInput = (e) => {
     try {
-      e.target.value = e.target?.value?.replace(/[^A-Za-z\s]/g, "");
-      setSearchInput(e.target?.value?.trim() || "");
+      e.target.value = e.target?.value
+        .replace(/[^A-Za-z\s]/g, "") // Remove non-alphabetic and non-space characters
+        .replace(/^\s/, ""); // Remove leading space if it's the first character
+
+      setSearchInput(e.target?.value || "");
     } catch (err) {
       console.error({ err });
     }
@@ -23,7 +26,7 @@ const Search = ({ onSubmit }) => {
       e.preventDefault();
       if (searchInput?.trim()?.length) {
         onSubmit(true);
-        const url = `${apiHost}?search=${searchInput}&key=${apiKey}`;
+        const url = `${apiHost}?search=${searchInput?.trim()}&key=${apiKey}`;
         const res = await fetch(url);
 
         if (res.ok) {
