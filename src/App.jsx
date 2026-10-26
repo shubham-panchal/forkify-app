@@ -27,7 +27,7 @@ function App() {
           <div className={classes?.main}>
             {Object.keys(selectedData)?.length ? (
               <Recipe selectedRecipe={selectedData} />
-            ) : (
+            ) : state?.results < 0 ? (
               <div className={classes?.message}>
                 <img
                   src={imageKeyMapping?.smileyIcon}
@@ -40,7 +40,7 @@ function App() {
                   fun!
                 </div>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

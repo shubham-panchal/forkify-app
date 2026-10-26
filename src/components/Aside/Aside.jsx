@@ -13,6 +13,7 @@ const Aside = ({ onSelection, showLoader }) => {
   const [selectedRecipe, setSelectedRecipe] = useState({});
   const [totalLength, setTotalLength] = useState(0);
   const [loader, setLoader] = useState(false);
+  const [isResultsOpen, setIsResultsOpen] = useState(false);
 
   useEffect(() => {
     // console.log(state);
@@ -27,7 +28,10 @@ const Aside = ({ onSelection, showLoader }) => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [state?.all_recipes]);
+    if (state?.results >= 0) {
+      setIsResultsOpen(true);
+    }
+  }, [state?.all_recipes, state?.results]);
 
   useEffect(() => {
     setLoader(showLoader);
@@ -40,6 +44,7 @@ const Aside = ({ onSelection, showLoader }) => {
 
   const handleRecipeSelect = (data) => {
     setSelectedRecipe(data);
+    setIsResultsOpen(false);
     // dispatch({ type: "SET_SELECTED_RECIPE", payload: data });
     onSelection(data);
   };
@@ -56,10 +61,33 @@ const Aside = ({ onSelection, showLoader }) => {
   return showLoader ? (
     <Loader />
   ) : (
-    <div className={classes?.aside_component}>
+    <div
+      className={`${classes?.aside_component} ${
+        isResultsOpen ? classes?.results_open : ""
+      }`}
+    >
+      {state?.results >= 0 && (
+        <button
+          type="button"
+          className={classes?.results_toggle}
+          aria-expanded={isResultsOpen}
+          aria-controls="recipe-results"
+          onClick={() => setIsResultsOpen((isOpen) => !isOpen)}
+        >
+          <span>
+            {isResultsOpen ? "Hide results" : `Show results (${totalLength})`}
+          </span>
+          <span
+            className={`${classes?.toggle_icon} ${
+              isResultsOpen ? classes?.toggle_icon_open : ""
+            }`}
+            aria-hidden="true"
+          />
+        </button>
+      )}
       {state?.all_recipes?.length ? (
         <>
-          <div className={classes?.recipe_list}>
+          <div id="recipe-results" className={classes?.recipe_list}>
             {filteredRecipesData?.map((data) => (
               <div
                 className={`${classes?.recipes} ${
@@ -113,9 +141,13 @@ const Aside = ({ onSelection, showLoader }) => {
           </div>
         </>
       ) : !state?.results ? (
-        <div className={classes?.no_recipes_text}>
+        <div id="recipe-results" className={classes?.no_recipes_text}>
           <img src={imageKeyMapping?.iconDanger} alt="danger" />
-          No recipes found for your query! <br /> Please try again.{" "}
+          <span>
+            No recipes found for your query!
+            <br />
+            Please try again.
+          </span>
         </div>
       ) : (
         <></>

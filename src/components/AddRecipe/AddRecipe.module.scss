@@ -11,7 +11,8 @@
 
   .modal {
     background-color: #ffffff;
-    min-width: 60rem;
+    width: min(60rem, calc(100vw - 2rem));
+    min-width: 0;
     // height: 100%;
     max-height: 82vh;
     padding: 2.5rem;
@@ -114,6 +115,50 @@
       justify-content: center;
       align-items: center;
       gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .modal {
+      padding: 2rem;
+
+      .form_container .form {
+        gap: 1.25rem;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 0.5rem;
+
+    .modal {
+      width: 100%;
+      max-height: calc(100vh - 1rem);
+      padding: 2.75rem 1rem 1rem;
+      border-radius: 0.375rem;
+
+      .form_container .form {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        .fields_wrapper {
+          overflow: visible;
+        }
+
+        .btn_submit,
+        .btn_add {
+          margin: 0;
+          justify-self: start;
+        }
+      }
+
+      .success_message {
+        padding: 1rem 0;
+        font-size: 1.125rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+      }
     }
   }
 }
